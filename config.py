@@ -115,6 +115,10 @@ CONFIG = {
         "role": "registrations",
         "path": "input/CCIT-SRP-Student-Registration-Form.xlsx",
         "glob": "*Student*Registration*.xlsx",
+        "share_url": (
+            "https://myudst-my.sharepoint.com/:x:/g/personal/60107348_udst_edu_qa/"
+            "IQCaBlmIF6GyTpFBuPZqZcy-AcIlI8ys0cWlBpNFCrURwOY"
+        ),
         "sheet": "Sheet1",
         "optional": True,
         "required_columns": ["Action", "Project", "Student ID", "Student full name"],
