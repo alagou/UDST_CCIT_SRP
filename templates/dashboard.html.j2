@@ -29,9 +29,16 @@
       padding: 16px 28px;
     }
     .brand img { height: 78px; width: auto; }
-    .brand .college {
+    .brand .uni {
       margin: 0;
       font-size: 18px;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.3;
+    }
+    .brand .college {
+      margin: 4px 0 0;
+      font-size: 16px;
       font-weight: 700;
       color: var(--navy);
       line-height: 1.3;
@@ -85,14 +92,6 @@
     header h1 { margin: 0 0 4px; font-size: 22px; font-weight: 650; }
     header p { margin: 0; color: #d6e6f7; font-size: 14px; }
     main { max-width: 1180px; margin: 0 auto; padding: 20px 20px 48px; }
-    footer {
-      background: #1d1e1c;
-      color: #efefee;
-      text-align: center;
-      padding: 16px 20px;
-      font-size: 14px;
-    }
-    footer a { color: #fff; }
     .stats {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -196,7 +195,7 @@
     @media print {
       .tabs, .controls, .focus-bar, .details-btn, #panel-about, #panel-contact { display: none; }
       #panel-status { display: block; }
-      header, footer { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
       .badge { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
     }
   </style>
@@ -204,7 +203,10 @@
 <body>
   <div class="brand">
     <img src="{{ logo_src }}" alt="University of Doha for Science and Technology">
-    <p class="college">College of Computing and Information Technology</p>
+    <div>
+      <p class="uni">University of Doha for Science and Technology</p>
+      <p class="college">College of Computing and Information Technology</p>
+    </div>
   </div>
   <header>
     <h1>CCIT Student Research Program</h1>
@@ -462,8 +464,5 @@
       });
     }());
   </script>
-  <footer>
-    <p>Contact: <a href="mailto:{{ contact_email }}">{{ contact_email }}</a></p>
-  </footer>
 </body>
 </html>
