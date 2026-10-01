@@ -84,11 +84,11 @@
     .page h2 { margin: 0 0 12px; color: var(--navy); font-size: 20px; }
     .page p { margin: 0 0 14px; font-size: 15px; line-height: 1.65; }
     .page p:last-child { margin-bottom: 0; }
-    .page a { color: var(--navy); }
     .contact { margin: 0; }
     .contact div { margin: 0 0 14px; }
     .contact dt { font-size: 12px; font-weight: 700; color: var(--muted); letter-spacing: 0.03em; text-transform: uppercase; }
     .contact dd { margin: 2px 0 0; font-size: 16px; }
+    .contact dd + dd { margin-top: 6px; }
     .contact a { color: var(--navy); }
     header h1 { margin: 0 0 4px; font-size: 22px; font-weight: 650; }
     header p { margin: 0; color: #d6e6f7; font-size: 14px; }
@@ -338,7 +338,6 @@
         <h2>About SRP</h2>
         <p>The CCIT Student Research Program (SRP) is an initiative that aims to formalize and promote voluntary research collaborations between students and faculty members. The program provides students with opportunities to engage in impactful research beyond their regular coursework, capstone projects, and funded research activities, while enabling faculty members to mentor motivated students in areas aligned with their research expertise and interests.</p>
         <p>Following the launch of the program in May 2025 and the successful 1st SRP Showcase held in June 2026, we are pleased to continue building on this momentum and welcome new faculty and student participants for the 2026/2027 SRP cycle.</p>
-        <p>For questions about the program, email <a href="mailto:asif.khan@udst.edu.qa">asif.khan@udst.edu.qa</a>.</p>
       </article>
     </div>
 
@@ -349,6 +348,7 @@
           <div>
             <dt>Email</dt>
             <dd><a href="mailto:{{ contact_email }}">{{ contact_email }}</a></dd>
+            <dd><a href="mailto:asif.khan@udst.edu.qa">asif.khan@udst.edu.qa</a></dd>
           </div>
           <div>
             <dt>College</dt>
