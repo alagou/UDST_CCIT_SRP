@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+
+# Form exports and generated reports contain student and faculty records.
+input/
+output/
+data/
