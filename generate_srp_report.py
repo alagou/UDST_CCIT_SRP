@@ -264,6 +264,7 @@ def _print_summary(summary: dict, issues: list, paths: dict, registry: ProjectRe
     print("")
     print("CCIT SRP report complete")
     print(f"Projects: {summary['total_projects']}")
+    print(f"Active projects: {summary['projects_active']}")
     print(f"Students assigned: {summary['total_students_assigned']}")
     print(f"Recruiting: {summary['projects_recruiting']}")
     print(f"Team full: {summary['projects_full']}")

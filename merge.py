@@ -536,6 +536,7 @@ def build_view(projects: list, issues: list):
     cards = [_card(project) for project in projects]
     summary = {
         "total_projects": len(projects),
+        "projects_active": sum(1 for project in projects if not project["is_empty"]),
         "total_students_assigned": sum(project["assigned_count"] for project in projects),
         "projects_recruiting": sum(1 for project in projects if "recruit" in project["status_label"].lower()),
         "projects_full": sum(1 for project in projects if "team full" in project["status_label"].lower()),
