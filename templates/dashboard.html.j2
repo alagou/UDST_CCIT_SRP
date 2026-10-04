@@ -296,14 +296,14 @@
         <p class="pid">{{ card.project_id }}</p>
         <h2>{{ card.title }}</h2>
         <p class="meta"><strong>Supervisor:</strong> {{ card.supervisor_name }} ({{ card.supervisor_email }})</p>
+        {% if card.co_supervisor %}
+        <p class="meta"><strong>Co-Supervisor:</strong> {{ card.co_supervisor }}</p>
+        {% endif %}
         <span class="badge" style="background: {{ card.status_color }}">{{ card.status_label }}</span>
         <button type="button" class="details-btn" data-id="{{ card.project_id }}">Details</button>
         <p class="meta"><strong>Student Capacity:</strong> {{ card.assigned }} / {{ card.maximum_display }}
           · <strong>Available Positions:</strong> {{ card.available_display }}</p>
         <div class="details">
-        {% if card.co_supervisor %}
-        <p class="meta"><strong>Co-Supervisor:</strong> {{ card.co_supervisor }}</p>
-        {% endif %}
         <p class="meta"><strong>Current Members</strong></p>
         {% if card.members %}
         <ul class="members">
