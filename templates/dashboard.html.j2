@@ -20,29 +20,6 @@
       color: var(--ink);
       background: var(--paper);
     }
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 22px;
-      background: #fff;
-      border-bottom: 1px solid var(--line);
-      padding: 16px 28px;
-    }
-    .brand img { height: 78px; width: auto; }
-    .brand .uni {
-      margin: 0;
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--ink);
-      line-height: 1.3;
-    }
-    .brand .college {
-      margin: 4px 0 0;
-      font-size: 16px;
-      font-weight: 700;
-      color: var(--ink);
-      line-height: 1.3;
-    }
     header {
       background: var(--navy);
       color: #fff;
@@ -175,7 +152,7 @@
     .focus-bar button:hover, .details-btn:hover { background: var(--navy); color: #fff; }
     .details-btn { display: none; }
     .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 12px; }
-    body.view-compact .cards { grid-template-columns: 1fr; }
+    body.view-compact .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     body.view-compact .card { padding: 10px 12px; }
     body.view-compact .details { display: none; }
     body.view-compact .details-btn { display: inline-block; }
@@ -213,9 +190,14 @@
       padding: 18px;
       color: var(--muted);
     }
-    @media (max-width: 640px) {
-      .brand { flex-direction: column; align-items: flex-start; gap: 10px; }
-      .brand img { height: 72px; }
+    .updated {
+      margin: 28px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+    }
+    @media (max-width: 700px) {
+      body.view-compact .cards { grid-template-columns: 1fr; }
     }
     @media print {
       .tabs, .controls, .focus-bar, .details-btn, #panel-about, #panel-contact { display: none; }
@@ -225,17 +207,10 @@
     }
   </style>
 </head>
-<body>
-  <div class="brand">
-    <img src="{{ logo_src }}" alt="University of Doha for Science and Technology">
-    <div>
-      <p class="uni">University of Doha for Science and Technology</p>
-      <p class="college">College of Computing and Information Technology</p>
-    </div>
-  </div>
+<body class="view-compact">
   <header>
     <h1>CCIT Student Research Program</h1>
-    <p>2026/2027 · Generated {{ generated_at }}</p>
+    <p>2026/2027</p>
   </header>
   <nav class="tabs" aria-label="Sections">
     <button type="button" data-tab="panel-status" aria-selected="true">Project Status</button>
@@ -292,8 +267,8 @@
       </label>
       <label>View
         <select id="f-view">
+          <option value="compact" selected>Compact</option>
           <option value="full">Full</option>
-          <option value="compact">Compact</option>
         </select>
       </label>
       <label>Project
@@ -394,6 +369,7 @@
         </dl>
       </article>
     </div>
+    <p class="updated">Content last updated on {{ generated_at }}</p>
   </main>
   <script>
     (function () {
