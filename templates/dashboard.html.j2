@@ -242,7 +242,7 @@
         <input id="q-title" type="search" placeholder="Search titles">
       </label>
       <label>Supervisor
-        <input id="q-supervisor" type="search" placeholder="Search supervisor name">
+        <input id="q-supervisor" type="search" placeholder="Search supervisor or co-supervisor">
       </label>
       <label>Student
         <input id="q-student" type="search" placeholder="Search student name">
@@ -255,14 +255,6 @@
           <option value="empty">Empty</option>
           <option value="closed">Closed</option>
           <option value="action">Action Needed</option>
-        </select>
-      </label>
-      <label>Preferred program
-        <select id="f-program">
-          <option value="">All programs</option>
-          {% for program in programs %}
-          <option value="{{ program|lower }}">{{ program }}</option>
-          {% endfor %}
         </select>
       </label>
       <label>View
@@ -288,7 +280,7 @@
       <article class="card"
         data-id="{{ card.project_id }}"
         data-title="{{ card.title|lower }}"
-        data-supervisor="{{ (card.supervisor_name ~ ' ' ~ card.supervisor_email)|lower }}"
+        data-supervisor="{{ (card.supervisor_name ~ ' ' ~ card.supervisor_email ~ ' ' ~ (card.co_supervisor or ''))|lower }}"
         data-students="{{ card.student_search }}"
         data-bucket="{{ card.bucket }}"
         data-empty="{{ 'true' if card.is_empty else 'false' }}"
@@ -377,7 +369,6 @@
       var supervisorInput = document.getElementById("q-supervisor");
       var studentInput = document.getElementById("q-student");
       var statusSelect = document.getElementById("f-status");
-      var programSelect = document.getElementById("f-program");
       var viewSelect = document.getElementById("f-view");
       var projectSelect = document.getElementById("f-project");
       var shown = document.getElementById("shown-count");
@@ -391,7 +382,6 @@
         var supervisor = supervisorInput.value.trim().toLowerCase();
         var student = studentInput.value.trim().toLowerCase();
         var status = statusSelect.value;
-        var program = programSelect.value;
         var project = projectSelect.value;
         if (project && card.dataset.id !== project) return false;
         if (title && card.dataset.title.indexOf(title) === -1) return false;
@@ -401,10 +391,6 @@
           if (card.dataset.empty !== "true") return false;
         } else if (status && card.dataset.bucket !== status) {
           return false;
-        }
-        if (program) {
-          var list = (card.dataset.programs || "").split("|").filter(Boolean);
-          if (list.indexOf(program) === -1 && list.indexOf("any") === -1) return false;
         }
         return true;
       }
@@ -440,7 +426,6 @@
         node.addEventListener("input", applyFilters);
       });
       statusSelect.addEventListener("change", applyFilters);
-      programSelect.addEventListener("change", applyFilters);
       viewSelect.addEventListener("change", applyFilters);
       projectSelect.addEventListener("change", applyFilters);
       document.getElementById("back-to-list").addEventListener("click", function () {
